@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+.projects {
+  position: relative;
+  &__new {
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    pm-projects-list-item {
+      cursor: pointer;
+      margin: 8px 15px;
+      transition: 0.2s all ease;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

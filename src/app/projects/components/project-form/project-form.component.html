@@ -1,0 +1,78 @@
+<div class="project-form">
+  <form [formGroup]="form">
+
+    <label>
+      <h4>Project name</h4>
+      <input type="text" formControlName="projectName" placeholder="e.g. Java Project" class="project-form__input" [class.error]="nameControlInvalid">
+      <div class="project-form__error" *ngIf="nameControlInvalid">
+        <p>Project must have a name</p>
+      </div>
+    </label>
+
+    <label>
+      <h4>Project description</h4>
+      <input type="text" formControlName="projectDescription" placeholder="e.g. this is description" class="project-form__input"
+        [class.error]="projectDescriptionControlInvalid">
+      <div class="project-form__error" *ngIf="projectDescriptionControlInvalid">
+        <p>Project must have a description</p>
+      </div>
+    </label>
+
+    <label>
+      <h4>Project Complexity</h4>
+      <input type="number" formControlName="complexity" class="project-form__input" [class.error]="complexityControlInvalid || complexityControlInvalidRange">
+      <div class="project-form__error" *ngIf="complexityControlInvalid">
+        <p>Project must have a specified complexity</p>
+      </div>
+      <div class="project-form__error" *ngIf="complexityControlInvalidRange">
+        <p>Project must have a range between 1 and 10</p>
+      </div>
+    </label>
+
+    <div formGroupName="timeline">
+      <label>
+        <h4>Is Present project?</h4>
+        <input type="checkbox" formControlName="isPresent" class="project-form__input">
+        <div *ngIf="!isPresentControl.value">
+          <div class="date-panel">
+            <div class="date-chooser">
+              <label>
+                <h4>Start Date</h4>
+                <input type="date" formControlName="startDate" placeholder="Start Date" class="project-form__input" [class.error]="startDateControlInvalid">
+              </label>
+            </div>
+            <div class="date-chooser">
+              <label>
+                <h4>End Date</h4>
+                <input type="date" formControlName="endDate" placeholder="Start Date" class="project-form__input" [class.error]="endDateControlInvalid">
+              </label>
+            </div>
+            <div class="project-form__error" *ngIf="isTimelineInvalid">
+              <p>If project is not present it needs to have start and endDate</p>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <ng-content></ng-content>
+    <label>
+      <h4>Select Skills</h4>
+    </label>
+    <div class="project-form__list">
+      <pm-project-skills [skills]="skills" formControlName="skills">
+      </pm-project-skills>
+    </div>
+    <div class="project-form__actions">
+      <button type="button" class="btn btn__ok" *ngIf="!exists" (click)="createProject(form)">
+        Create Project
+      </button>
+      <button type="button" class="btn btn__ok" *ngIf="exists" (click)="updateProject(form)">
+        Save changes
+      </button>
+      <button type="button" class="btn btn__warning" *ngIf="exists" (click)="removeProject(form)">
+        Delete Project
+      </button>
+    </div>
+  </form>
+</div>

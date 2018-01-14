@@ -1,0 +1,22 @@
+.project-card {
+  max-width: 18rem;
+  height: 100%;
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+
+    .card-property {
+      font-weight: bold;
+    }
+
+    .card-row-rest {
+      flex-grow: 1;
+    }
+  }
+
+  .skill-badge {
+    margin-left: 0px;
+    margin-right: 5px;
+  }
+}

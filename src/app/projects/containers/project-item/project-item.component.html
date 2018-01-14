@@ -1,0 +1,5 @@
+<div class="project-item">
+  <pm-project-form [project]="project$ | async" [skills]="skills$ | async" (selected)="onSelect($event)" (create)="onCreate($event)"
+    (update)="onUpdate($event)" (remove)="onRemove($event)">
+  </pm-project-form>
+</div>

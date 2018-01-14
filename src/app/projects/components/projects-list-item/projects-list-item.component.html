@@ -1,0 +1,31 @@
+<div class="project-card card border-secondary mb-3" *ngIf="project" [routerLink]="['/projects', project.id]">
+  <div class=" card-header ">{{project.projectName}}</div>
+  <div class="card-body ">
+    <div class="card-row ">
+      <div>
+        <span class="card-property ">Timeline:</span>
+        <div *ngIf="project.timeline.isPresent; else elseBlock ">This is current project</div>
+        <ng-template #elseBlock>
+          <div>
+            {{project.timeline.startDate | date}} - {{project.timeline.endDate | date}}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="card-row-rest ">
+      <div>
+        <span class="card-property ">Description:</span>
+        <div class="card-description ">{{project.projectDescription}}</div>
+      </div>
+    </div>
+    <div class="card-row ">
+      <div>
+        <span class="card-property ">Complexity:</span>
+        <pm-star-rating [rating]="project.complexity "></pm-star-rating>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer ">
+    <span class="skill-badge badge badge-pill badge-success " *ngFor="let skill of (project.skills) ">{{skill.name}}</span>
+  </div>
+</div>

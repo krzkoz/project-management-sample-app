@@ -1,0 +1,14 @@
+<div class="projects">
+  <div class="projects__new">
+    <a class="btn  btn-primary btn__ok" routerLink="./new">
+      New Project
+    </a>
+  </div>
+  <div class="projects__list">
+    <div *ngIf="!((projects$ | async)?.length)">
+      No projects, add one to get started.
+    </div>
+    <pm-projects-list-item *ngFor="let project of (projects$ | async)" [project]="project">
+    </pm-projects-list-item>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<div class="project-skills">
+  <div class="project-skills-item" *ngFor="let skill of skills;" (click)="selectSkill(skill)" [class.active]="existsInSkills(skill)">
+    {{ skill.name }}
+  </div>
+</div>
