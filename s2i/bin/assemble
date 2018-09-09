@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+echo "---> Installing NPM Dependencies"
+npm install
+
+echo "---> Building Angular CLI Application"
+./node_modules/@angular/cli/bin/ng build --prod
+
+echo "---> Installing application to web container"
+cp -Rf ./dist/* ./opt/app-root/src
+
+#echo "---> Removing application source"
+#rm -rf /tmp/src
+
+# Fix source directory permissions
+fix-permissions ./

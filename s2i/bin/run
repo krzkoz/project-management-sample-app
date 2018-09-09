@@ -1,0 +1,12 @@
+#!/bin/bash -e
+#
+#
+# For more information see the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+echo "---> setting permissions on db.json"
+chmod 755 db.json
+
+echo "---> Starting json server with mocks"
+
+exec npm run json-server
